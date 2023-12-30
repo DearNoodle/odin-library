@@ -1,6 +1,8 @@
 .main{
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr 190px;
+    gap: 30px;
+
 }
 
 ol li{

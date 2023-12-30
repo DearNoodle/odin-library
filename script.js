@@ -1,14 +1,25 @@
+const bookList = document.querySelector('.book-list');
+const newBookForm = document.querySelector('.new-book-form');
+const btnNewBook = document.querySelector('.new-book');
+const btnSubmit = document.querySelector('.submit');
+const bookTitle = document.querySelector('#title');
+const bookAuthor = document.querySelector('#author');
+const bookPages = document.querySelector('#pages');
+const bookIsRead = document.querySelector('#is-read');
+
 const myLibrary = [ 
-    {title:'book-1',author:'me',pages:100},
-    {title:'book-2',author:'me',pages:200},
-    {title:'book-3',author:'me',pages:300}
+    {title:'book-1',author:'me',pages:100,isRead:true},
+    {title:'book-2',author:'me',pages:200,isRead:false},
+    {title:'book-3',author:'me',pages:300,isRead:true}
 ];
 
-function Book(title, author, pages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+    }
 }
 
 function addBookToLibrary(title = 'unknown', author = 'unknown', pages = 'unknown', isRead = false) {
@@ -52,17 +63,8 @@ function toggleFormDisplay() {
     }
 }
 
-const bookList = document.querySelector('.book-list');
-const newBookForm = document.querySelector('.new-book-form');
-const btnNewBook = document.querySelector('.new-book');
-const btnSubmit = document.querySelector('.submit');
-const bookTitle = document.querySelector('#title');
-const bookAuthor = document.querySelector('#author');
-const bookPages = document.querySelector('#pages');
-const bookIsRead = document.querySelector('#is-read');
-
 myLibrary.forEach(book => {
-    addBookToLibrary(book.title,book.author,book.pages)
+    addBookToLibrary(book.title,book.author,book.pages,book.isRead);
 });
 
 toggleFormDisplay();
