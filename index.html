@@ -13,23 +13,23 @@
         <form class="new-book-form" action="">
             <div>
                 <label for="title">Title: </label>
-                <input type="text" id="title">
+                <input type="text" id="title" maxlength="15" required>
             </div>
             <div>
                 <label for="author">Author: </label>
-                <input type="text" id="author">
+                <input type="text" id="author" maxlength="10" required>
             </div>
             <div>
                 <label for="pages">No. of pages: </label>
-                <input type="text" id="pages">
+                <input type="number" id="pages" max="100" min="1" required>
             </div>
             <div>
                 <label for="is-read">Have you read this book?
                 <input type="checkbox" id="is-read">
                 </label>
             </div>
-
-            <button class="submit" type="button">Submit</button>
+            <button class="submit">Submit</button>
+            <span class="error-msg"></span>
         </form>
     </div>
     <script src="script.js"></script>

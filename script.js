@@ -6,6 +6,7 @@ const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const bookPages = document.querySelector('#pages');
 const bookIsRead = document.querySelector('#is-read');
+const errorMsg = document.querySelector('.error-msg');
 
 const myLibrary = [ 
     {title:'book-1',author:'me',pages:100,isRead:true},
@@ -75,6 +76,26 @@ btnNewBook.addEventListener('click',(event) => {
 });
 
 btnSubmit.addEventListener('click', (event) => {
+    if (bookTitle.validity.valueMissing) {
+        errorMsg.textContent = 'Missing Title Input';
+        return;
+    }
+    if (bookAuthor.validity.valueMissing) {
+        errorMsg.textContent = 'Missing Author Input';
+        return;
+    }
+    if (bookPages.validity.valueMissing) {
+        errorMsg.textContent = 'Missing Pages Value';
+        return;
+    }
+    if (bookPages.validity.rangeOverflow) {
+        errorMsg.textContent = 'Page number cannot be more than 100';
+        return;
+    }
+    if (bookPages.validity.rangeUnderflow) {
+        errorMsg.textContent = 'Page number cannot be less than 1';
+        return;
+    }
     addBookToLibrary(bookTitle.value,bookAuthor.value,bookPages.value,bookIsRead.checked);
     toggleFormDisplay();
     newBookForm.reset();

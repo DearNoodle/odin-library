@@ -9,3 +9,8 @@ ol li{
     display: flex;
     gap: 10px;
 }
+
+button.submit,
+span.error-msg {
+    display: block;
+}
